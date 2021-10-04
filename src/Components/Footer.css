@@ -1,0 +1,22 @@
+.footer h3 {
+  font-family: 'Roboto Slab', serif;
+}
+
+.footer {
+  background: #e3e3e3;
+}
+
+.footer span {
+  font-size: .8rem;
+  color: #5b5b5b;
+}
+
+.footPic {
+  background-position: center;
+  background-size: cover;
+}
+
+.footer li {
+  display: inline;
+  padding-right: 20px;
+}

@@ -1,0 +1,39 @@
+.menu-image {
+  /* width: 100%; */
+  /* position: absolute;
+  top: 0; */
+}
+
+.menu-container {
+  /* position: relative; */
+  /* height: 500px; */
+  background-color: green;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+}
+
+.menu-container:hover {
+  cursor: pointer;
+}
+
+.menu-container h4 {
+  color: white;
+  font-family: 'Roboto Slab', serif;
+  text-shadow: 2px 2px 2px #000000;
+}
+
+.menu-container p {
+  color: white;
+  font-family: 'Prompt', sans-serif;
+  text-shadow: 2px 2px 2px #000000;
+}
+
+.icon{
+  width: 100px;
+  height: 100px;
+  background: #31aaee;
+  border-radius: 50px;
+  /* position: absolute; */
+}

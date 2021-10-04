@@ -1,0 +1,25 @@
+.nav-bar {
+  background: rgba(0,0,0,0.55);
+  /* position: fixed; */
+  /* top: 0; */
+}
+
+.logo {
+  margin: 10px 20px;
+  /* height: 300px; */
+}
+
+
+.menu-link li{
+  color:white;
+  display: inline;
+  margin-right: 32px;
+  transition: all 2s;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.menu-link li:hover {
+  border-bottom: 1px solid white;
+  cursor: pointer;
+}
