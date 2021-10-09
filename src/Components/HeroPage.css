@@ -3,10 +3,20 @@
   width: 100%;
   object-fit: cover;
   /* position: absolute; */
+  animation-name: imageZoomOut;
+  animation-duration: 1.5s;
 }
 
 .HeroPage {
   position: relative;
+  overflow: hidden;
+  background:linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2)), url('./../assets/intro.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  height: 100vh;
+  background-size: cover;
+  animation-name: imageZoomOut;
+  animation-duration: 1.5s;
 }
 
 .HeroPage .sub-slogan {
@@ -18,4 +28,43 @@
   top: 80%;
   right: 0;
   padding: 5px 50px;
+}
+
+.HeroPage .main-slogan {
+  font-size: 32px;
+  font-family: 'prompt';
+  color: white;
+  margin-top: -100px;
+  text-shadow: 1px 1px #000;
+}
+
+
+.HeroPage #avatara-logo{
+  width: 260px;
+  height: 200px;
+  /* margin: 0 auto; */
+  margin-top: 200px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+  padding: 20px;
+  animation-name: logoEaseIn;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+}
+
+@keyframes imageZoomOut {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes logoEaseIn {
+  0% {
+    margin-top: -200px;
+  }
+  100% {
+    margin-top: 200px;
+  }
 }

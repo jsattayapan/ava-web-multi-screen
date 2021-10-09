@@ -1,10 +1,16 @@
-.RoomSection h4{
+.RoomSection h4, .RoomSection h2{
   color: #3774BC;
   font-family: 'Roboto Slab', serif;
 }
 
+
+
 .RoomSection p {
   font-family: 'prompt', serif;
+}
+
+.check-availability-btn:hover {
+  cursor: pointer;
 }
 
 .iconsList li {

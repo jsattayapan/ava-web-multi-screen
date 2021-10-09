@@ -1,3 +1,4 @@
+import React from 'react'
 import NavBar from './Components/NavBar'
 import HeroPage from './Components/HeroPage'
 import IntroductionSection from './Components/IntroductionSection'
@@ -16,6 +17,7 @@ import RestaurantBody from './Components/RestaurantBody'
 import JepOverview from './assets/landing-image.jpg'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import MessengerCustomerChat from 'react-messenger-customer-chat';
+import { info } from './text-information'
 
 import {
   BrowserRouter as Router,
@@ -25,43 +27,58 @@ import {
 } from "react-router-dom";
 
 
-function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact path="/rooms">
-          <RoomsPage />
-        </Route>
-        <Route exact path="/location">
-          <Location />
-        </Route>
-        <Route exact path="/promotions">
-          <Promotion />
-        </Route>
-        <Route exact path="/restaurant">
-          <Restaurant />
-        </Route>
-        <Route exact path="/activities">
-          <Activities />
-        </Route>
+class App extends React.Component {
 
-      </Switch>
-      <MessengerCustomerChat
-      pageId="584518321727016"
-      appId="580338108973002"
-    />
-    </Router>
-  );
+  constructor(props){
+    super(props)
+    this.state = {
+      language: localStorage.getItem('language') || 'thai'
+    }
+  }
+
+  languageOnChange = (language) => {
+    localStorage.setItem('language', language)
+    this.setState(() => ({language}))
+  }
+
+  render(){
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <HomePage info={info[this.state.language]} languageOnChange={this.languageOnChange}  />
+          </Route>
+          <Route exact path="/rooms">
+            <RoomsPage info={info[this.state.language]} languageOnChange={this.languageOnChange} />
+          </Route>
+          <Route exact path="/location">
+            <Location info={info[this.state.language]} languageOnChange={this.languageOnChange} />
+          </Route>
+          <Route exact path="/promotions">
+            <Promotion info={info[this.state.language]} languageOnChange={this.languageOnChange} />
+          </Route>
+          <Route exact path="/restaurant">
+            <Restaurant info={info[this.state.language]} languageOnChange={this.languageOnChange} />
+          </Route>
+          <Route exact path="/activities">
+            <Activities info={info[this.state.language]} languageOnChange={this.languageOnChange} />
+          </Route>
+
+        </Switch>
+        <MessengerCustomerChat
+        pageId="584518321727016"
+        appId="580338108973002"
+      />
+      </Router>
+    );
+  }
 }
 
-function Restaurant() {
+function Restaurant(props) {
   return (
     <div>
       <div className="container-fluid">
-        <NavBar />
+        <NavBar languageOnChange={props.languageOnChange} />
       <ImageBackground image={JepOverview} />
       </div>
       <div className="container">
@@ -101,35 +118,35 @@ function Restaurant() {
 //   logged_out_greeting="สวัสดีครับ สอบถามข้อมูลได้ครับ">
 //       </div>
 
-function HomePage() {
+function HomePage(props) {
   return (
     <div className="container-fluid">
-      <NavBar />
-      <HeroPage />
-      <IntroductionSection />
+      <NavBar languageOnChange={props.languageOnChange} />
+      <HeroPage info={props.info} />
+      <IntroductionSection info={props.info} />
       <ImageLinkList />
       <Footer />
     </div>
   )
 }
 
-function Activities() {
+function Activities(props) {
   return (
     <div>
       <div className="container-fluid">
-      <NavBar />
+      <NavBar languageOnChange={props.languageOnChange} />
     <br />
     <br />
     <br />
       <Col12Logo />
     <div className="row">
       <div className="col-12 mt-5 text-center RoomSection">
-        <h4>Activities</h4>
+        <h2>Activities</h2>
       </div>
     </div>
   </div>
   <div className="container">
-    <ActivitiesList />
+    <ActivitiesList info={props.info} />
   </div>
   <ImageLinkList />
   <Footer />
@@ -137,11 +154,11 @@ function Activities() {
   )
 }
 
-function Promotion() {
+function Promotion(props) {
   return (
     <div>
       <div className="container-fluid">
-      <NavBar />
+      <NavBar languageOnChange={props.languageOnChange} />
     <br />
     <br />
     <br />
@@ -161,11 +178,11 @@ function Promotion() {
   )
 }
 
-function Location() {
+function Location(props) {
   return (
     <div>
       <div className="container-fluid">
-      <NavBar />
+      <NavBar languageOnChange={props.languageOnChange} />
     <br />
     <br />
     <br />
@@ -181,11 +198,11 @@ function Location() {
   )
 }
 
-function RoomsPage() {
+function RoomsPage(props) {
   return (
     <div>
       <div className="container-fluid">
-      <NavBar />
+      <NavBar languageOnChange={props.languageOnChange} />
     <br />
     <br />
     <br />
@@ -195,16 +212,16 @@ function RoomsPage() {
   <div className="container">
     <div className="row justify-content-center">
       <div className="col-12 mt-5 text-center RoomSection">
-        <h4>Rooms</h4>
-      <p>(Breakfast included)</p>
+        <h4>{props.info.roomSection.title}</h4>
+      <p>{props.info.roomSection.subtitle}</p>
       </div>
     <div className="col-12 py-2  my-3 text-center" style={{background: 'rgba(49,170,238,0.45)'}}>
       Availability from 17 Apr to 20 Apr 2010, 4 Adults. <u>Edit</u>
     </div>
-  </div>
-    <RoomSection />
-    <RoomSection />
-    <RoomSection />
+    </div>
+    <RoomSection info={props.info.roomSection.deluxeDouble} />
+    <RoomSection info={props.info.roomSection.deluxeTwin} />
+    <RoomSection info={props.info.roomSection.deluxeTriple} />
   </div>
   <ImageLinkList />
   <Footer />

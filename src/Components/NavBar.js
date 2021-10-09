@@ -25,13 +25,13 @@ function NavBar() {
   );
 }
 
-export default function NMds() {
+export default function NMds(props) {
   return (
-    <Navbar variant="dark" style={{background: 'rgba(0,0,0,0.9)'}} fixed="top" expand="lg">
+    <Navbar variant="dark" style={{background: 'rgba(7, 89, 155,0.95)'}} fixed="top" expand="lg">
   <Navbar.Brand href="/"><img alt="logo" className="logo" src={AvataraLogoWhiteNoName} width='30' /></Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto">
+    <Nav className="mr-auto navbar-link">
       <Nav.Link href="promotions">Promotions</Nav.Link>
     <Nav.Link href="rooms">Rooms</Nav.Link>
   <Nav.Link href="restaurant">Jep's Restaurant</Nav.Link>
@@ -39,8 +39,8 @@ export default function NMds() {
   <Nav.Link href="location">Location</Nav.Link>
     </Nav>
   </Navbar.Collapse>
-  <button className="btn btn-outline-light mr-md-3">EN</button>
-<button className="btn btn-outline-light mr-md-3">TH</button>
+  <button onClick={() => props.languageOnChange('english')} className="btn btn-outline-light mr-md-3">EN</button>
+<button onClick={() => props.languageOnChange('thai')} className="btn btn-outline-light mr-md-3">TH</button>
   <BookButton />
 </Navbar>
 

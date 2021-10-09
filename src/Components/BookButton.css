@@ -4,4 +4,9 @@
   color: white;
   width: 120px;
   text-align: center;
+  text-decoration: none;
+}
+
+.book-button:hover {
+  cursor: pointer;
 }
